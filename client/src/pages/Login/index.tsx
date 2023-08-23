@@ -1,5 +1,4 @@
-import { ViewIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, FormControl, FormHelperText, Input, Text, VStack, Image, Link, InputRightAddon, InputGroup, IconButton } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormHelperText, Input, Text, VStack, Image, Link } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
