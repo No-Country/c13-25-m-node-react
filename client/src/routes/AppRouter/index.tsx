@@ -1,6 +1,6 @@
 import { Home } from '@/pages/Home'
+import Login from '@/pages/Login'
 import { Route, Routes } from 'react-router-dom'
-import LoginLayout from '@/pages/Login/LoginLayout'
 import { SingnUp } from '@/pages/SignUp'
 
 export const AppRouter = () => {
@@ -8,7 +8,7 @@ export const AppRouter = () => {
     <Routes>
       <Route path="/signup" element={<SingnUp />} />
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginLayout />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   )
 }
