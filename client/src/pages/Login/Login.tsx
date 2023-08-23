@@ -43,16 +43,15 @@ const Login = () => {
                     </FormControl>
 
                     <FormControl isRequired mb={4}>
-                        <InputGroup>
-                            <Input
-                                variant="FocusWhite"
-                                onChange={handleChange}
-                                value={formData.password}
-                                type="password"
-                                name="password"
-                                placeholder="Contraseña" />
-                            <InputRightAddon children={<IconButton aria-label='Hidden Password' icon={<ViewIcon />} />} />
-                        </InputGroup>
+
+                        <Input
+                            variant="FocusWhite"
+                            onChange={handleChange}
+                            value={formData.password}
+                            type="password"
+                            name="password"
+                            placeholder="Contraseña" />
+
                         <FormHelperText display={'flex'} justifyContent={'flex-end'} ><Link color={'viegogreen'}>Olvidaste tu Contraseña?</Link></FormHelperText>
                     </FormControl>
 
