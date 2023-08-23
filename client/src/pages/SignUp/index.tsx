@@ -74,7 +74,7 @@ export const SingnUp = () => {
     e.preventDefault()
     console.log('Datos enviados:', user)
   }
-  console.log(errors)
+
   return (
     <>
       <Flex h="100vh">
