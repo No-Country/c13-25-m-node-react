@@ -4,6 +4,8 @@
     "userName": "user1",
     "email": "user1@example.com",
     "password": "password123",
+    "region": "LAS",
+    "description": "lorem dsadsdasdasdsdas ",
     "photoUrl": "https://example.com/user1_photo.jpg"
   },
   {
@@ -11,6 +13,8 @@
     "userName": "user2",
     "email": "user2@example.com",
     "password": "securepass456",
+    "region": "LAS",
+    "description": "lorem dsadsdasdasdsdas ",
     "photoUrl": "https://example.com/user2_photo.jpg"
   },
   {
@@ -18,6 +22,7 @@
     "userName": "user3",
     "email": "user3@example.com",
     "password": "mysecretword",
+    "region": "LAS",
     "photoUrl": "https://example.com/user3_photo.jpg"
   },
   {
@@ -25,6 +30,7 @@
     "userName": "user4",
     "email": "user4@example.com",
     "password": "p@ssw0rd",
+    "region": "LAS",
     "photoUrl": "https://example.com/user4_photo.jpg"
   },
   {
@@ -32,6 +38,7 @@
     "userName": "user5",
     "email": "user5@example.com",
     "password": "strongpass789",
+    "region": "LAS",
     "photoUrl": "https://example.com/user5_photo.jpg"
   }
 ]
