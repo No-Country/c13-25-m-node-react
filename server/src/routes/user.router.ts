@@ -21,9 +21,21 @@ userRouter.get('/:id', (req, res) => {
   }
   return res.status(404).json({ message: 'user not found' })
 })
-
+// CREATE NEW USER
 userRouter.post('/register', registerValidator, registerController)
+// UPDATE EXISTING USER
+userRouter.put('/updateProfile/:id', (req, res) => {
+  const userId = Number(req.params.id)
+  const newUserData: User = req.body
+  const foundUserIndex = users.findIndex((user) => user.id === userId)
+  if (foundUserIndex !== -1) {
+    users[foundUserIndex] = newUserData
+    return res
+      .status(200)
+      .json({ ...newUserData, success: true, message: 'user data was updated' })
+  }
+  return res.status(404).json({ message: 'user not found' })
+})
 // userRouter.post('/login') // LOGIN
-// userRouter.put('/updateProfile') // UPDATE EXISTING USER
 
 export default userRouter
