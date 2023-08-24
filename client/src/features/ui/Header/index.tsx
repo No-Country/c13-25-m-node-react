@@ -36,7 +36,9 @@ export const Header = () => {
         justifyContent={'space-between'}
       >
         <Box>
-          <Image src={logo} alt={logo} />
+          <Link to="/">
+            <Image src={logo} alt={logo} />
+          </Link>
         </Box>
         {isAuth ? (
           <>
@@ -63,27 +65,31 @@ export const Header = () => {
         ) : (
           <Flex>
             <Stack direction="row" spacing={14} align={'center'}>
-              <Button
-                fontSize={18}
-                color={'#319795'}
-                py={6}
-                px={10}
-                variant="ghost"
-              >
-                <Link to={'/signup'}>Craer cuenta</Link>
-              </Button>
-              <Button
-                fontSize={18}
-                py={6}
-                px={10}
-                color={'#319795'}
-                border={2}
-                borderStyle={'solid'}
-                borderColor={'#319795'}
-                variant="outline"
-              >
-                <Link to={'/login'}>Ingresar</Link>
-              </Button>
+              <Link to="/signup">
+                <Button
+                  fontSize={18}
+                  color={'#319795'}
+                  py={6}
+                  px={10}
+                  variant="ghost"
+                >
+                  Craer cuenta
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button
+                  fontSize={18}
+                  py={6}
+                  px={10}
+                  color={'#319795'}
+                  border={2}
+                  borderStyle={'solid'}
+                  borderColor={'#319795'}
+                  variant="outline"
+                >
+                  Ingresar
+                </Button>
+              </Link>
             </Stack>
           </Flex>
         )}
