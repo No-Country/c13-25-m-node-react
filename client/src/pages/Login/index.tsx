@@ -17,11 +17,19 @@ interface FormValues {
   password: string
 }
 
+
+
 const Login = () => {
   const [formData, setFormData] = useState<FormValues>({
     email: '',
     password: '',
   })
+
+  const [isEmailValid, setIsEmailValid] = useState(false)
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  const isFormValid = isEmailValid && isPasswordValid
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Datos enviados:', formData)
@@ -29,8 +37,15 @@ const Login = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
-  }
+    if (name === 'email') {
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setIsEmailValid(emailRegex.test(value));
+    }
+    if (name === 'password') {
+      setIsPasswordValid(value.length >= 8);
+    }
+  }
   return (
     <Flex h="100vh">
       <VStack flex={1} justify="center" align="center" spacing={8}>
@@ -48,30 +63,24 @@ const Login = () => {
             <FormControl
               isRequired
               mb={4}
-              onInvalid={(e) => {
-                console.log(e.nativeEvent)
-                e.stopPropagation
-              }}
+
             >
               <Input
-                onErrorCapture={(e) => {
-                  console.log(e.nativeEvent)
-                  e.stopPropagation
-                }}
-                onChange={handleChange}
-                variant="FocusWhite"
-                bg="white"
                 color="#2C2C2C"
+                onChange={handleChange}
+                bg="white"
                 type="email"
                 name="email"
                 value={formData.email}
-                placeholder="Nombre de usuario"
+                placeholder="Ingrese su Email"
+                _placeholder={{
+                  color: "#2C2C2C"
+                }}
               />
             </FormControl>
 
             <FormControl isRequired mb={4}>
               <Input
-                variant="FocusWhite"
                 bg="white"
                 color="#2C2C2C"
                 onChange={handleChange}
@@ -79,6 +88,9 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
+                _placeholder={{
+                  color: "#2C2C2C"
+                }}
               />
 
               <FormHelperText display={'flex'} justifyContent={'flex-end'}>
@@ -87,7 +99,14 @@ const Login = () => {
             </FormControl>
 
             <FormControl paddingTop={5}>
-              <Button variant={'LoginButton'} minW="100%" type="submit">
+              <Button
+                isDisabled={!isFormValid}
+                color={'white'}
+                _hover={!isFormValid ? { bgColor: '#7E7E7E' } : undefined}
+                bg={isFormValid ? '#319795' : '#7E7E7E'}
+                variant={'ghost'}
+                minW="100%"
+                type="submit">
                 Iniciar Sesión
               </Button>
               <FormHelperText display={'flex'} justifyContent={'center'}>
@@ -103,7 +122,7 @@ const Login = () => {
       </VStack>
 
       <Box flex={1} bg={'#464646'}></Box>
-    </Flex>
+    </Flex >
   )
 }
 
