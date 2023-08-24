@@ -9,7 +9,6 @@ import {
   Heading,
   Link,
   Flex,
-  Image,
   Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -187,15 +186,7 @@ export const SingnUp = () => {
             </Box>
           </Box>
         </VStack>
-        <Box flex={1}>
-          <Image
-            h="100%"
-            w="100%"
-            objectFit="cover"
-            src="https://th.bing.com/th/id/R.f158af6a5fc8ebeeb4f656b1911178c4?rik=ngwny8qUpDXuIQ&riu=http%3a%2f%2fimg.voolean.com%2fimg%2fnotice%2fcate_39.jpg&ehk=OMf0NiYWPtwezY8PtuHRcAf3PymznQGRVBbHwXLKPKc%3d&risl=&pid=ImgRaw&r=0"
-            alt="League of Legends"
-          />
-        </Box>
+        <Box flex={1} bg={'#464646'}></Box>
       </Flex>
     </>
   )
