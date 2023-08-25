@@ -18,6 +18,10 @@ interface FormValues {
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6861a0971eedbe9a6e43764cc4c3459ae9a8bb0c
 const Login = () => {
   const [formData, setFormData] = useState<FormValues>({
     email: '',
@@ -101,7 +105,11 @@ const Login = () => {
               <Button
                 isDisabled={!isFormValid}
                 color={'white'}
+<<<<<<< HEAD
                 _hover={!isFormValid ? { bgColor: '#7E7E7E' } : { bgColor: '#319795' }}
+=======
+                _hover={!isFormValid ? { bgColor: '#7E7E7E' } : undefined}
+>>>>>>> 6861a0971eedbe9a6e43764cc4c3459ae9a8bb0c
                 bg={isFormValid ? '#319795' : '#7E7E7E'}
                 variant={'ghost'}
                 minW="100%"

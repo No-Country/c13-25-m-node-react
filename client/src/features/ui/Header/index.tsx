@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 export const Header = () => {
   const [isAuth] = useState<boolean>(false)
   const [inputSearch, setinputSearch] = useState<string>('')
-
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputSearch(e.target.value)
   }
