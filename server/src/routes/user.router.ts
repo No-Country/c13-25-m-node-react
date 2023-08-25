@@ -3,6 +3,7 @@ import usersData from '../database/users.json'
 import { User } from '../../types'
 import { registerController } from '../controllers/user/register.controller'
 import { registerValidator } from '../utils/user/registerValidator'
+import { loginValidator } from '../utils/user/loginValidator'
 const userRouter = express.Router()
 const users: User[] = usersData as User[]
 
@@ -37,5 +38,6 @@ userRouter.put('/updateProfile/:id', (req, res) => {
   return res.status(404).json({ message: 'user not found' })
 })
 // userRouter.post('/login') // LOGIN
+userRouter.post('login', loginValidator, loginController)
 
 export default userRouter
