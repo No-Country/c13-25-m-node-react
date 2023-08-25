@@ -1,6 +1,11 @@
 export interface User {
-  id: number
-  userName: string
+  username: string
+  email: string
   password: string
-  photoUrl: string
+  photourl?: string
+}
+
+export interface SignUser {
+  email: string
+  password: string
 }

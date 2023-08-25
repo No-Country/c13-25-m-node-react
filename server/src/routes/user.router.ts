@@ -1,6 +1,8 @@
 import express from 'express'
 import usersData from '../database/users.json'
 import { User } from '../../types'
+import { registerController } from '../controllers/user/register.controller'
+import { signValidator } from '../utils/user/signValidator'
 const userRouter = express.Router()
 const users: User[] = usersData as User[]
 
@@ -20,13 +22,7 @@ userRouter.get('/:id', (req, res) => {
   return res.status(404).json({ message: 'user not found' })
 })
 // CREATE NEW USER
-userRouter.post('/register', (req, res) => {
-  const newUser = req.body
-  users.push(newUser)
-  res
-    .status(200)
-    .json({ ...newUser, success: true, message: 'created new user' })
-})
+userRouter.post('/register', signValidator, registerController)
 // UPDATE EXISTING USER
 userRouter.put('/updateProfile/:id', (req, res) => {
   const userId = Number(req.params.id)
