@@ -27,7 +27,7 @@ export const Validation = (
   const value = e.target.value
   const changedInfoInput: Partial<User> = { ...user, [e.target.name]: value }
   const err: Errors = { ...errors }
-  const filterMail = /.*@[a-z0-9.-]*/i
+  const filterMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   const filterPass = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]/
 
   switch (type) {

@@ -17,8 +17,6 @@ interface FormValues {
   password: string
 }
 
-
-
 const Login = () => {
   const [formData, setFormData] = useState<FormValues>({
     email: '',
@@ -26,7 +24,7 @@ const Login = () => {
   })
 
   const [isEmailValid, setIsEmailValid] = useState(false)
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false)
 
   const isFormValid = isEmailValid && isPasswordValid
 
@@ -38,12 +36,11 @@ const Login = () => {
     const { name, value } = e.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
     if (name === 'email') {
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      setIsEmailValid(emailRegex.test(value));
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      setIsEmailValid(emailRegex.test(value))
     }
     if (name === 'password') {
-      setIsPasswordValid(value.length >= 8);
+      setIsPasswordValid(value.length >= 8)
     }
   }
   return (
@@ -60,11 +57,7 @@ const Login = () => {
         </Heading>
         <Box minW={359}>
           <form onSubmit={handleSubmit}>
-            <FormControl
-              isRequired
-              mb={4}
-
-            >
+            <FormControl isRequired mb={4}>
               <Input
                 color="#2C2C2C"
                 onChange={handleChange}
@@ -74,7 +67,7 @@ const Login = () => {
                 value={formData.email}
                 placeholder="Ingrese su Email"
                 _placeholder={{
-                  color: "#2C2C2C"
+                  color: '#2C2C2C',
                 }}
               />
             </FormControl>
@@ -89,7 +82,7 @@ const Login = () => {
                 name="password"
                 placeholder="Contraseña"
                 _placeholder={{
-                  color: "#2C2C2C"
+                  color: '#2C2C2C',
                 }}
               />
 
@@ -106,7 +99,8 @@ const Login = () => {
                 bg={isFormValid ? '#319795' : '#7E7E7E'}
                 variant={'ghost'}
                 minW="100%"
-                type="submit">
+                type="submit"
+              >
                 Iniciar Sesión
               </Button>
               <FormHelperText display={'flex'} justifyContent={'center'}>
@@ -122,7 +116,7 @@ const Login = () => {
       </VStack>
 
       <Box flex={1} bg={'#464646'}></Box>
-    </Flex >
+    </Flex>
   )
 }
 
