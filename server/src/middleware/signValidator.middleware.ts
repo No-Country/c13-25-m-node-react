@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult, body } from 'express-validator'
 
-export const registerValidator = [
+export const signValidator = [
   body('username')
     .notEmpty()
     .withMessage('Username no puede ser un campo vacio')
@@ -11,14 +11,16 @@ export const registerValidator = [
     .notEmpty()
     .withMessage('Email no puede ser un campo vacio')
     .isString()
-    .withMessage('Email debe ser un string'),
+    .withMessage('Email debe ser un string')
+    .isEmail()
+    .withMessage('Email no valido'),
   body('password')
     .notEmpty()
     .withMessage('Password no puede ser un campo vacio')
     .isString()
     .withMessage('Password debe ser un string')
-    .isStrongPassword()
-    .withMessage('Password debe contener al menos 8 caracteres, una mayuscula, un numero y un caracter especial'),
+    .isLength({ min: 8 })
+    .withMessage('Password debe contener al menos 8 caracteres'),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req)
 
