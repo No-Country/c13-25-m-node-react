@@ -1,14 +1,17 @@
 import User from '../../models/User'
 import { hashPassword } from '../../utils/auth/hashPassword'
 import { Document } from 'mongoose'
-import { SignUser as IUser } from '../../../types'
+import { User as IUser } from '../../../types'
 
-export const createUserService = async (user: IUser): Promise<Document | string> => {
-  const { email, password } = user
+export const createUserService = async (
+  user: IUser
+): Promise<Document | string> => {
+  const { email, password, username } = user
   try {
     const hashedPassword = await hashPassword(password)
     const newUser = await User.create({
       email,
+      username,
       password: hashedPassword
     })
     return newUser
