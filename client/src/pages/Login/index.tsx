@@ -17,7 +17,7 @@ interface FormValues {
   password: string
 }
 
-const Login = () => {
+export const Login = () => {
   const [formData, setFormData] = useState<FormValues>({
     email: '',
     password: '',
@@ -119,5 +119,3 @@ const Login = () => {
     </Flex>
   )
 }
-
-export default Login

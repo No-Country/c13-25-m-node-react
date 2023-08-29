@@ -1,12 +1,11 @@
-import { Home } from '@/pages/Home'
-import Login from '@/pages/Login'
+import { Dashboard, SingnUp, Home, Login } from '@/pages'
 import { Route, Routes } from 'react-router-dom'
-import { SingnUp } from '@/pages/SignUp'
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/signup" element={<SingnUp />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
     </Routes>
