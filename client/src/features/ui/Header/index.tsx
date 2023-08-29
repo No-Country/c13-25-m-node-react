@@ -16,7 +16,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export const Header = () => {
-  const [isAuth] = useState<boolean>(false)
+  const [isAuth] = useState<boolean>(true)
   const [inputSearch, setinputSearch] = useState<string>('')
   const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputSearch(e.target.value)
