@@ -11,7 +11,7 @@ import {
   Icon,
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
-import logo from '@/assets/logos/logo.svg'
+import logo from '@/assets/logos/LogoNuevo.png'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -36,11 +36,6 @@ export const Header = () => {
         justifyContent={'space-between'}
         opacity={location.pathname === '/' ? 0.6 : 1}
       >
-        <Box>
-          <Link to="/">
-            <Image src={logo} alt={logo} />
-          </Link>
-        </Box>
         {location.pathname !== '/' ? (
           <>
             {isAuth ? (
@@ -101,6 +96,11 @@ export const Header = () => {
           ''
         )}
       </Flex>
+      <Box pos={'absolute'} mt={'-80px'} ml={'60px'}>
+        <Link to="/">
+          <Image src={logo} alt={logo} w={'100px'} />
+        </Link>
+      </Box>
     </Box>
   )
 }

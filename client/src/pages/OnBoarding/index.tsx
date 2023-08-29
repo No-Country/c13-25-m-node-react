@@ -80,7 +80,7 @@ export const Onboarding = () => {
               src={item.image}
               alt=""
             />
-            <Box w={'50%'} pos={'absolute'} mt={'-32%'} paddingLeft={'50px'}>
+            <Box w={'50%'} pos={'absolute'} mt={'-32%'} paddingLeft={38}>
               <Heading ml={38} mb={'50px'} color={'#E3C488'}>
                 {item.title}
               </Heading>
@@ -94,7 +94,7 @@ export const Onboarding = () => {
       <Box
         w={'50%'}
         pos={'absolute'}
-        paddingLeft={'85px'}
+        paddingLeft={'74px'}
         mt={'-11%'}
         zIndex={'3'}
       >
