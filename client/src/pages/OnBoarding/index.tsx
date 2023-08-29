@@ -1,54 +1,120 @@
-import { useState, useEffect } from 'react'
-import { Box } from '@chakra-ui/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import SwiperCore from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import { Container, Image, Heading, Text, Box, Button } from '@chakra-ui/react'
+import Slider1 from '@/assets/ImgOnboarding/Slider1.jpg'
+import Slider2 from '@/assets/ImgOnboarding/Slider2.jpg'
+import Slider3 from '@/assets/ImgOnboarding/Slider3.jpg'
+import Slider4 from '@/assets/ImgOnboarding/Slider4.jpg'
+import { Link } from 'react-router-dom'
 
-const images = [
-  'https://www.lavanguardia.com/uploads/2020/12/08/5fcf67908e5db.jpeg',
-  'https://th.bing.com/th/id/R.e18dae18196742520656688085177f2f?rik=HgicgPO0JW01fQ&riu=http%3a%2f%2fkumundra.com%2fwp-content%2fuploads%2f2022%2f01%2f1641562328_League-of-Legends-VGU-2023-Champions-sondages-et-plus.jpg&ehk=Xw0HiCWx7frc4V3BDqoQrk7KEtifBSBm6Ywdgl9pK0g%3d&risl=&pid=ImgRaw&r=0',
-  'https://cdn1.dotesports.com/wp-content/uploads/2021/10/27062749/102221_QuickGameplayThoughts_Banner_v2-800x450.jpg',
-  'https://esportsmaxx.com/wp-content/uploads/2022/08/lolpreseason2023ft-1.jpg',
-  'https://cdn.esports.gg/wp-content/uploads/2022/08/12153932/Syndra_6-968x544.jpg',
+interface Slider {
+  id: string
+  title: string
+  text: string
+  [key: string]: string
+}
+const sliderData: Slider[] = [
+  {
+    id: '1',
+    title: 'Bienvenido a HexZone',
+    text: 'HexZone es un lugar en línea donde los jugadores apasionados por la tecnología Hextech se reúnen para compartir conocimientos, estrategias y experiencias relacionadas con el juego.',
+  },
+  {
+    id: '2',
+    title: 'Encuentra nuevos compañeros',
+    text: 'Dentro de nuestra tecnología hemos creado una herramienta donde podrás encontrar invocadores dentro de tu mismo elo dispuestos a jugar contigo, armar equipos para participar en competiciones, o solo pasar el rato, eso lo decides tú.',
+  },
+  {
+    id: '3',
+    title: 'Conecta con otros invocadores',
+    text: 'Comparte tus logros y postea imágenes, videos y comentarios para demostrar de que eres capaz.',
+  },
+  {
+    id: '4',
+    title: 'Mantente al tanto de los nuevos cambios',
+    text: 'Descubre las últimas actualizaciones y novedades del parche de League of Legends.',
+  },
 ]
 
-const Onboarding = () => {
-  const [currentImage, setCurrentImage] = useState(0)
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextImage()
-    }, 5000) // Cambiar de imagen cada 5 segundos
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [currentImage])
-
+const add = 'image'
+const addImage = [Slider1, Slider2, Slider3, Slider4]
+for (let i = 0; i < sliderData.length; i++) {
+  sliderData[i][add] = addImage[i]
+}
+SwiperCore.use([Navigation, Pagination, Autoplay])
+export const Onboarding = () => {
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      bg="#282c37"
+    <Container
+      maxW="100vw"
+      maxH="100vh"
+      position="absolute"
+      top="0"
+      left="0"
+      m={0}
+      p={0}
     >
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentImage}
-          src={images[currentImage]}
-          alt={`Onboarding Slide ${currentImage + 1}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </AnimatePresence>
-    </Box>
+      <Swiper
+        spaceBetween={0}
+        centeredSlides={true}
+        slidesPerView={1}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
+      >
+        {sliderData.map((item, key) => (
+          <SwiperSlide key={key}>
+            <Image
+              w="100vw"
+              h="100vh"
+              objectFit="cover"
+              overflow="hidden"
+              src={item.image}
+              alt=""
+            />
+            <Box w={'50%'} pos={'absolute'} mt={'-32%'} paddingLeft={38}>
+              <Heading ml={38} mb={'50px'} color={'#E3C488'}>
+                {item.title}
+              </Heading>
+              <Text pos="absolute" ml={38} w={'80%'} fontSize={'24px'}>
+                {item.text}
+              </Text>
+            </Box>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <Box
+        w={'50%'}
+        pos={'absolute'}
+        paddingLeft={'74px'}
+        mt={'-11%'}
+        zIndex={'3'}
+      >
+        <Link to="/signup">
+          <Button
+            mr={'20px'}
+            w={'40%'}
+            backgroundColor="#E3C488"
+            variant="solid"
+            color={'#1E2027'}
+          >
+            Registrarme
+          </Button>
+        </Link>
+        <Link to="/login">
+          <Button w={'40%'} variant="outline" color={'#E3C488'} border={'1px'}>
+            Iniciar sesión
+          </Button>
+        </Link>
+      </Box>
+    </Container>
   )
 }
-
-export default Onboarding
