@@ -1,5 +1,5 @@
-import { Center, Tab, TabList, Tabs, TabIndicator, Box } from '@chakra-ui/react'
-import { TabPosting } from './components'
+import { Center, Tab, TabList, Tabs, TabIndicator } from '@chakra-ui/react'
+import { TabPosting, Posting, PostingCreate } from './components'
 
 export const Feed = () => {
   return (
@@ -12,7 +12,7 @@ export const Feed = () => {
           borderStyle="solid"
           borderColor="#CCCCCC"
           bgColor="#282C37"
-          h={14}
+          h={12}
         >
           <Tab _selected={{ color: '#319795' }} w="50%">
             Para ti
@@ -28,8 +28,9 @@ export const Feed = () => {
           bg="#319795"
           borderRadius="1px"
         />
-        <Box>adsds</Box>
+        <PostingCreate />
         <TabPosting />
+        <Posting />
       </Tabs>
     </Center>
   )

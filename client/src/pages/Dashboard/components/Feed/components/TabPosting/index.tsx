@@ -28,8 +28,6 @@ export const TabPosting = () => {
     return post.type === 'following'
   })
 
-  console.log(postingFilter)
-  console.log(postings)
   return (
     <TabPanels>
       <TabPanel>
