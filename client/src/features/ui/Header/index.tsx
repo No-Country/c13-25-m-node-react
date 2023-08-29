@@ -41,58 +41,64 @@ export const Header = () => {
             <Image src={logo} alt={logo} />
           </Link>
         </Box>
-        {isAuth ? (
+        {location.pathname !== '/' ? (
           <>
-            <InputGroup w="30%" bg={'#FFF'} borderRadius={6}>
-              <InputRightElement px={6}>
-                <Icon boxSize={6}>
-                  <SearchIcon color="#319795" />
-                </Icon>
-              </InputRightElement>
-              <Input
-                value={inputSearch}
-                type="text"
-                onChange={handleInputSearch}
-                color="gray.400"
-                placeholder="Buscar"
-                _placeholder={{ color: 'gray.400' }}
-                size="md"
-              />
-            </InputGroup>
-            <Box>
-              <Avatar size="lg" name="user" src="" />
-            </Box>
+            {isAuth ? (
+              <>
+                <InputGroup w="30%" bg={'#FFF'} borderRadius={6}>
+                  <InputRightElement px={6}>
+                    <Icon boxSize={6}>
+                      <SearchIcon color="#319795" />
+                    </Icon>
+                  </InputRightElement>
+                  <Input
+                    value={inputSearch}
+                    type="text"
+                    onChange={handleInputSearch}
+                    color="gray.400"
+                    placeholder="Buscar"
+                    _placeholder={{ color: 'gray.400' }}
+                    size="md"
+                  />
+                </InputGroup>
+                <Box>
+                  <Avatar size="lg" name="user" src="" />
+                </Box>
+              </>
+            ) : (
+              <Flex>
+                <Stack direction="row" spacing={14} align={'center'}>
+                  <Link to="/signup">
+                    <Button
+                      fontSize={18}
+                      color={'#319795'}
+                      py={6}
+                      px={10}
+                      variant="ghost"
+                    >
+                      Craer cuenta
+                    </Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button
+                      fontSize={18}
+                      py={6}
+                      px={10}
+                      color={'#319795'}
+                      border={2}
+                      borderStyle={'solid'}
+                      borderColor={'#319795'}
+                      variant="outline"
+                    >
+                      Ingresar
+                    </Button>
+                  </Link>
+                </Stack>
+              </Flex>
+            )}
           </>
         ) : (
-          <Flex>
-            <Stack direction="row" spacing={14} align={'center'}>
-              <Link to="/signup">
-                <Button
-                  fontSize={18}
-                  color={'#319795'}
-                  py={6}
-                  px={10}
-                  variant="ghost"
-                >
-                  Craer cuenta
-                </Button>
-              </Link>
-              <Link to="/login">
-                <Button
-                  fontSize={18}
-                  py={6}
-                  px={10}
-                  color={'#319795'}
-                  border={2}
-                  borderStyle={'solid'}
-                  borderColor={'#319795'}
-                  variant="outline"
-                >
-                  Ingresar
-                </Button>
-              </Link>
-            </Stack>
-          </Flex>
+          ''
         )}
       </Flex>
     </Box>
