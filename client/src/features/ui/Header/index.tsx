@@ -13,7 +13,7 @@ import {
 import { SearchIcon } from '@chakra-ui/icons'
 import logo from '@/assets/logos/logo.svg'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export const Header = () => {
   const [isAuth] = useState<boolean>(true)
@@ -21,9 +21,10 @@ export const Header = () => {
   const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputSearch(e.target.value)
   }
+  const location = useLocation()
 
   return (
-    <Box>
+    <Box pos={'absolute'} zIndex={2} w={'100%'}>
       <Flex
         minH={'110px'}
         align={'center'}
@@ -33,6 +34,7 @@ export const Header = () => {
         borderStyle={'solid'}
         borderColor={'#363945'}
         justifyContent={'space-between'}
+        opacity={location.pathname === '/' ? 0.6 : 1}
       >
         <Box>
           <Link to="/">
