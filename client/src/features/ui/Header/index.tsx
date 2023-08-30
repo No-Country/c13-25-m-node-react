@@ -40,6 +40,7 @@ export const Header = () => {
           <>
             {isAuth ? (
               <>
+                <Box w={'100px'}></Box>
                 <InputGroup w="30%" bg={'#FFF'} borderRadius={6}>
                   <InputRightElement px={6}>
                     <Icon boxSize={6}>

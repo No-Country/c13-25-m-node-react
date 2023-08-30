@@ -62,7 +62,7 @@ export const Onboarding = () => {
         centeredSlides={true}
         slidesPerView={1}
         autoplay={{
-          delay: 2500,
+          delay: 7000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -80,11 +80,16 @@ export const Onboarding = () => {
               src={item.image}
               alt=""
             />
-            <Box w={'50%'} pos={'absolute'} mt={'-32%'} paddingLeft={38}>
-              <Heading ml={38} mb={'50px'} color={'#E3C488'}>
+            <Box w={'45%'} pos={'absolute'} mt={'-32%'} paddingLeft={'70px'}>
+              <Heading
+                mb={'20px'}
+                w={'70%'}
+                color={'#E3C488'}
+                fontSize={'40px'}
+              >
                 {item.title}
               </Heading>
-              <Text pos="absolute" ml={38} w={'80%'} fontSize={'24px'}>
+              <Text w={'90%'} pos={'relative'} fontSize={'20px'}>
                 {item.text}
               </Text>
             </Box>
@@ -92,9 +97,9 @@ export const Onboarding = () => {
         ))}
       </Swiper>
       <Box
-        w={'50%'}
+        w={'45%'}
         pos={'absolute'}
-        paddingLeft={'74px'}
+        paddingLeft={'70px'}
         mt={'-11%'}
         zIndex={'3'}
       >
