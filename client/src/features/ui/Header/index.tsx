@@ -34,7 +34,7 @@ export const Header = () => {
         borderStyle={'solid'}
         borderColor={'#363945'}
         justifyContent={'space-between'}
-        opacity={location.pathname === '/' ? 0.6 : 1}
+        opacity={location.pathname === '/' ? 0 : 1}
       >
         {location.pathname !== '/' ? (
           <>
@@ -97,7 +97,7 @@ export const Header = () => {
           ''
         )}
       </Flex>
-      <Box pos={'absolute'} mt={'-80px'} ml={'60px'}>
+      <Box pos={'absolute'} mt={'-80px'} ml={'70px'}>
         <Link to="/">
           <Image src={logo} alt={logo} w={'100px'} />
         </Link>
