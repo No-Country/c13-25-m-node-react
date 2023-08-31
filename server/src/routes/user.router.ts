@@ -4,6 +4,7 @@ import { getAllUsersController } from '../controllers/user/getAllUsers.controlle
 import { getUserByIdController } from '../controllers/user/getUserById.controller'
 import { registerController } from '../controllers/user/register.controller'
 import { signValidator } from '../middleware/signValidator.middleware'
+import { updateUserController } from '../controllers/user/updateUser.controller'
 const userRouter = express.Router()
 
 // GET ALL USERS
@@ -14,6 +15,9 @@ userRouter.get('/:id', getUserByIdController)
 
 // CREATE NEW USER
 userRouter.post('/register', signValidator, registerController)
+
 // UPDATE EXISTING USER
+
+userRouter.put('/:id', signValidator, updateUserController)
 
 export default userRouter
