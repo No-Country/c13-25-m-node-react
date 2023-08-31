@@ -1,14 +1,7 @@
-import { Center, Flex, Box, List } from '@chakra-ui/react'
+import { Center, Flex, Box } from '@chakra-ui/react'
 import { ContactSuggestions, Feed } from './components'
-import {
-  LiaNewspaperSolid,
-  LiaHouseDamageSolid,
-  LiaRocketchat,
-  LiaUsersSolid,
-} from 'react-icons/lia'
 
-import { SideButton } from './components/SideButton/index.tsx'
-
+import SimpleSidebar from './components/SimpleSidebar'
 export const Dashboard = () => {
   return (
     <Flex
@@ -17,13 +10,13 @@ export const Dashboard = () => {
       justifyContent="space-between"
       overflowX="hidden"
     >
-      <Box h="100vh" bgColor={'#282C37'} w={350}>
-        <List spacing={1}>
-          <SideButton icon={LiaHouseDamageSolid} name="Home" />
-          <SideButton icon={LiaNewspaperSolid} name="Noticias" />
-          <SideButton icon={LiaUsersSolid} name="Mi equipo" />
-          <SideButton icon={LiaRocketchat} name="Chat" />{' '}
-        </List>
+      <Box
+        h="100vh"
+        bgColor={'#282C37'}
+        w={350}
+        borderRight={'2px solid #E3C488'}
+      >
+        <SimpleSidebar />
       </Box>
 
       <Center p={7} w={1200}>
