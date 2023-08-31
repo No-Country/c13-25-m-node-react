@@ -2,9 +2,11 @@ import { Request, Response, NextFunction } from 'express'
 import { validationResult, body } from 'express-validator'
 
 export const loginValidator = [
-  body('username')
+  body('email')
     .notEmpty()
-    .withMessage('Username no debe estar vacio'),
+    .withMessage('Email no debe estar vacio')
+    .isEmail()
+    .withMessage('Email formato incorrecto'),
   body('password')
     .notEmpty()
     .withMessage('Password no debe estar vacio'),
@@ -18,6 +20,6 @@ export const loginValidator = [
       formattedErrors[key] = errors.mapped()[key].msg
     }
 
-    return res.status(403).json({ errors: formattedErrors })
+    return res.status(400).json({ errors: formattedErrors })
   }
 ]
