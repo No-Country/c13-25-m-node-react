@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { createContext, useContext, useState } from 'react'
 
 interface User {
@@ -29,7 +30,14 @@ export const AuthContextProvider = ({ children }: Props) => {
   }
 
   const signup = (username: string, email: string, password: string) => {
-    console.log(username, password, email)
+    axios
+      .post('http://localhost:8000/v1/user/register', {
+        username: username,
+        email,
+        password,
+      })
+      .then((res) => console.log(res.status, res.statusText, res.data.data))
+      .catch((error) => console.log(error))
   }
 
   const logout = () => {

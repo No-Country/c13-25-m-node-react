@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Validation } from '@/Validations'
+import { useAuth } from '@/context'
 
 interface UserSignup {
   name: string
@@ -35,6 +36,9 @@ export const UseFormSignup = () => {
   }
   const [errors, setErrors] = useState<Errors>(initialErrors)
   const [isFormValid, setIsFormValid] = useState(false)
+
+  const { signup } = useAuth()
+
   const handleInputChange = ({
     e,
     name,
@@ -70,6 +74,7 @@ export const UseFormSignup = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
+    signup(userForm.name, userForm.email, userForm.password)
   }
   return { handleSubmit, isFormValid, handleInputChange, errors, userForm }
 }
