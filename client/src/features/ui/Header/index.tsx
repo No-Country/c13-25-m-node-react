@@ -24,23 +24,25 @@ export const Header = () => {
   const location = useLocation()
 
   return (
-    <Box pos={'absolute'} zIndex={2} w={'100%'}>
-      <Flex
-        minH={'110px'}
-        align={'center'}
-        bgColor={'#282C37'}
-        borderBottom={1}
-        px={66}
-        borderStyle={'solid'}
-        borderColor={'#363945'}
-        justifyContent={'space-between'}
-        opacity={location.pathname === '/' ? 0 : 1}
-      >
-        {location.pathname !== '/' ? (
-          <>
+    <>
+      {location.pathname !== '/' ? (
+        <Box w={'100%'}>
+          <Flex
+            minH={'110px'}
+            align={'center'}
+            bgColor={'#282C37'}
+            borderBottom={1}
+            px={68}
+            borderStyle={'solid'}
+            borderColor={'#363945'}
+            justifyContent={'space-between'}
+          >
+            <Link to="/">
+              <Image src={logo} alt={logo} w={'100px'} />
+            </Link>
+
             {isAuth ? (
               <>
-                <Box w={'100px'}></Box>
                 <InputGroup w="30%" bg={'#FFF'} borderRadius={6}>
                   <InputRightElement px={6}>
                     <Icon boxSize={6}>
@@ -92,16 +94,15 @@ export const Header = () => {
                 </Stack>
               </Flex>
             )}
-          </>
-        ) : (
-          ''
-        )}
-      </Flex>
-      <Box pos={'absolute'} mt={'-80px'} ml={'70px'}>
-        <Link to="/">
-          <Image src={logo} alt={logo} w={'100px'} />
-        </Link>
-      </Box>
-    </Box>
+          </Flex>
+        </Box>
+      ) : (
+        <Box pos={'absolute'} zIndex={3} ml={'68px'} mt={'28px'}>
+          <Link to="/">
+            <Image src={logo} alt={logo} w={'100px'} />
+          </Link>
+        </Box>
+      )}
+    </>
   )
 }
