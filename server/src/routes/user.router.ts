@@ -6,6 +6,7 @@ import { registerController } from '../controllers/user/register.controller'
 import { loginController } from '../controllers/user/login.controller'
 import { signValidator } from '../middleware/signValidator.middleware'
 import { updateUserController } from '../controllers/user/updateUser.controller'
+import { loginValidator } from '../middleware/loginValidator.middleware'
 const userRouter = express.Router()
 
 // GET ALL USERS
