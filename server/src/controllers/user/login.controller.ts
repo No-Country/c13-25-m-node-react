@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { checkIfExists } from '../../utils/auth/userExists'
 import { comparePassword } from '../../utils/auth/hashPassword'
 import { SignUser as ISignUser, User as IUser } from '../../../types'
-import { generateToken } from '../../utils/generateToken'
+import { generateToken } from '../../utils/auth/generateToken'
 import { getUserByEmail } from '../../services/user/getUserByEmail.service'
 
 export const loginController = async (req: Request, res: Response): Promise<Response> => {
