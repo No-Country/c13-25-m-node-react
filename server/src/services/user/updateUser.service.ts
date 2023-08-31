@@ -14,5 +14,5 @@ export const updateUserService = async (
       password: await hashPassword(password)
     },
     { new: true }
-  ).select('-__v')) as Document | null
+  ).select('-password -__v')) as Document | null
 }

@@ -4,5 +4,5 @@ import { Types } from 'mongoose'
 export const getUserByIdService = async (
   id: Types.ObjectId
 ): Promise<Document | null> => {
-  return await User.findById(id, { __v: 0 })
+  return await User.findById(id, { __v: 0, password: 0 })
 }
