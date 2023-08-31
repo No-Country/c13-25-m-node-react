@@ -24,7 +24,7 @@ export const Header = () => {
   const location = useLocation()
 
   return (
-    <Box pos={'absolute'} zIndex={2} w={'100%'}>
+    <Box zIndex={2} w={'100%'}>
       <Flex
         minH={'110px'}
         align={'center'}
