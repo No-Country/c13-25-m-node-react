@@ -7,21 +7,22 @@ import { loginController } from '../controllers/user/login.controller'
 import { signValidator } from '../middleware/signValidator.middleware'
 import { updateUserController } from '../controllers/user/updateUser.controller'
 import { loginValidator } from '../middleware/loginValidator.middleware'
+import passport from 'passport'
 const userRouter = express.Router()
 
 // GET ALL USERS
-userRouter.get('/', getAllUsersController)
+userRouter.get('/', passport.authenticate('jwt', { session: false }), getAllUsersController)
 
 // GET USER BY ID
-userRouter.get('/:id', getUserByIdController)
+userRouter.get('/:id', passport.authenticate('jwt', { session: false }), getUserByIdController)
 
 // CREATE NEW USER
 userRouter.post('/register', signValidator, registerController)
 
-// UPDATE EXISTING USER
 // LOGIN USER
 userRouter.post('/login', loginValidator, loginController)
 
-userRouter.put('/:id', signValidator, updateUserController)
+// UPDATE EXISTING USER
+userRouter.put('/:id', passport.authenticate('jwt', { session: false }), signValidator, updateUserController)
 
 export default userRouter
