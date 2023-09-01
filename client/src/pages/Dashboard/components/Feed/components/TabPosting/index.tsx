@@ -3,23 +3,23 @@ import { TabPanel, TabPanels, Text, Box } from '@chakra-ui/react'
 export const TabPosting = () => {
   const postings = [
     {
-      text: 'saddadsaad',
+      text: '',
       type: 'foryou',
     },
     {
-      text: 'sddsadsadasdas',
+      text: '',
       type: 'foryou',
     },
     {
-      text: 'asddsadasdsa',
+      text: '',
       type: 'foryou',
     },
     {
-      text: 'xxxxxxxxxx',
+      text: '',
       type: 'following',
     },
     {
-      text: 'xxxxxxxxxx',
+      text: '',
       type: 'following',
     },
   ]
