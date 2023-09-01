@@ -10,7 +10,7 @@ import {
   Heading,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
 interface FormValues {
   email: string
@@ -18,6 +18,8 @@ interface FormValues {
 }
 
 export const Login = () => {
+  const goTo = useNavigate()
+
   const [formData, setFormData] = useState<FormValues>({
     email: '',
     password: '',
@@ -30,8 +32,10 @@ export const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    goTo('/dashboard')
     console.log('Datos enviados:', formData)
   }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
@@ -43,6 +47,7 @@ export const Login = () => {
       setIsPasswordValid(value.length >= 8)
     }
   }
+
   return (
     <Flex h="100vh">
       <VStack flex={1} justify="center" align="center" spacing={8}>

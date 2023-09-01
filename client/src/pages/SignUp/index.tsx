@@ -36,7 +36,7 @@ export const SingnUp = () => {
                 onChange={(e) =>
                   handleInputChange({
                     e,
-                    name: 'name',
+                    name: 'username',
                     type: 'name',
                     required: true,
                     maxLength: 25,

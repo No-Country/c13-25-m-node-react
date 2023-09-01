@@ -32,12 +32,12 @@ export const AuthContextProvider = ({ children }: Props) => {
   const signup = (username: string, email: string, password: string) => {
     axios
       .post('http://localhost:8000/v1/user/register', {
-        username: username,
+        username,
         email,
         password,
       })
       .then((res) => console.log(res.status, res.statusText, res.data.data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error.message))
   }
 
   const logout = () => {

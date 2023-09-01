@@ -3,7 +3,7 @@ import { Validation } from '@/Validations'
 import { useAuth } from '@/context'
 
 interface UserSignup {
-  name: string
+  username: string
   email: string
   password: string
   passwordAgain: string
@@ -23,13 +23,13 @@ interface HandleInputChangeProps {
 
 export const UseFormSignup = () => {
   const [userForm, setUserForm] = useState<UserSignup>({
-    name: '',
+    username: '',
     email: '',
     password: '',
     passwordAgain: '',
   })
   const initialErrors: Errors = {
-    name: '',
+    username: '',
     email: '',
     password: '',
     passwordAgain: '',
@@ -74,7 +74,7 @@ export const UseFormSignup = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-    signup(userForm.name, userForm.email, userForm.password)
+    signup(userForm.username, userForm.email, userForm.password)
   }
   return { handleSubmit, isFormValid, handleInputChange, errors, userForm }
 }
