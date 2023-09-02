@@ -1,4 +1,5 @@
-import axios from 'axios'
+import Cookies from 'js-cookie'
+import axios, { AxiosResponse } from 'axios'
 import React, { createContext, useContext, useState } from 'react'
 
 interface User {
@@ -17,6 +18,7 @@ interface AuthContextType {
   login: (password: string, email: string) => void
   signup: (email: string, userName: string, password: string) => void
   logout: () => void
+  auth: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
@@ -24,9 +26,18 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 export const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>()
   const [loading, setLoading] = useState<boolean>(false)
+  const [auth, setAuth] = useState<boolean>(false)
+
+  const SetData = (res: AxiosResponse) => {
+    Cookies.set('HexZone', res.data.token, { expires: 7 })
+    setAuth(true)
+  }
 
   const login = (password: string, email: string) => {
-    console.log(password, email)
+    axios
+      .post('http://localhost:8000/v1/user/login', { email, password })
+      .then((res) => SetData(res))
+      .catch((error) => console.log(error))
   }
 
   const signup = (username: string, email: string, password: string) => {
@@ -52,6 +63,7 @@ export const AuthContextProvider = ({ children }: Props) => {
     login,
     signup,
     logout,
+    auth,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
