@@ -1,5 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { UseFormLogin } from '@/hooks/UseFormLogin'
+
 import backgroundlogin from '@/assets/images/backgroundlogin.png'
 import {
   Box,
@@ -13,9 +14,14 @@ import {
   Heading,
 } from '@chakra-ui/react'
 
+import { useAuth } from '@/context'
+import { Navigate } from 'react-router-dom'
+
 export const Login = () => {
+  const { auth } = useAuth()
+
   const { isFormValid, handleSubmit, handleChange, formData } = UseFormLogin()
-  return (
+  return !auth ? (
     <Flex
       bgImage={`url(${backgroundlogin})`}
       bgPosition="center"
@@ -110,5 +116,7 @@ export const Login = () => {
         </VStack>
       </Flex>
     </Flex>
+  ) : (
+    <Navigate to="/dashboard" />
   )
 }

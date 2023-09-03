@@ -3,7 +3,7 @@ import { TabPosting, Posting, PostingCreate } from './components'
 
 export const Feed = () => {
   return (
-    <Center w={1450}>
+    <Center>
       <Tabs w="100%" h="100vh" colorScheme="#319795" variant="unstyled">
         <TabList
           borderBottomRadius={8}

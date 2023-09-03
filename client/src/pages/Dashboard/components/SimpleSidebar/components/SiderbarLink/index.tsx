@@ -49,12 +49,13 @@ export const SidebarLink = ({
       w={'100%'}
       h={'58px'}
       ml={'40px'}
-      leftIcon={<Icon as={IconComponent} boxSize={8} mr={4} />}
       fontSize="xl"
       variant="ghost"
+      leftIcon={<Icon as={IconComponent} boxSize={8} mr={4} />}
       _hover={{ ...styles }}
       _focus={{
         ...styles,
+
         '&::after': Polygon2,
         '&::before': Polygon1,
       }}
