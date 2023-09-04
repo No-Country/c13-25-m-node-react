@@ -1,8 +1,17 @@
-import { Strategy, ExtractJwt } from 'passport-jwt'
+import { Request } from 'express'
+import { Strategy } from 'passport-jwt'
 import User from './../models/User'
 
+const cookieExtractor = (req: Request): string | null => {
+  let cookie = null
+  if (req && req.cookies) {
+    cookie = req.cookies.Authorization
+  }
+  return cookie
+}
+
 const opts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: cookieExtractor,
   secretOrKey: process.env.JWT_SECRET
 }
 
