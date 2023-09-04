@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import api from './routes/api'
 import passport from 'passport'
 import { passportMiddleware } from './middleware/passportJwt.middleware'
@@ -8,9 +9,11 @@ const app = express()
 
 app.use(
   cors({
-    origin: '*'
+    origin: '*',
+    credentials: true
   })
 )
+app.use(cookieParser())
 app.use(express.json())
 app.use(passport.initialize())
 passport.use(passportMiddleware)
