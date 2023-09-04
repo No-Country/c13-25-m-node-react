@@ -30,7 +30,7 @@ export const SingnUp = () => {
               <Input
                 type="name"
                 name="name"
-                value={userForm.name}
+                value={userForm.name || ''}
                 placeholder="Nombre de usuario"
                 required
                 onChange={(e) =>
