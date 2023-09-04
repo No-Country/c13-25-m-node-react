@@ -7,10 +7,6 @@ const customTheme = {
       500: '#282C37', // color personalizado
     },
   },
-  config: {
-    initialColorMode: 'dark',
-    useSystemColorMode: false,
-  },
   components: {
     Button: {
       variants: {
@@ -31,6 +27,15 @@ const customTheme = {
             border: '2px solid',
             borderColor: '#319795',
             bg: '#319795',
+          },
+        },
+      },
+    },
+    Input: {
+      variants: {
+        FocusWhite: {
+          _focus: {
+            bg: '#ffffff',
           },
         },
       },
