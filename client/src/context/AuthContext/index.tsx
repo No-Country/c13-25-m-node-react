@@ -18,7 +18,7 @@ interface AuthContextType {
   login: (password: string, email: string) => void
   signup: (email: string, userName: string, password: string) => void
   logout: () => void
-  auth: boolean
+  isAuth: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
@@ -26,11 +26,11 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 export const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>()
   const [loading, setLoading] = useState<boolean>(false)
-  const [auth, setAuth] = useState<boolean>(false)
+  const [isAuth, setIsAuth] = useState<boolean>(false)
 
   const SetData = (res: AxiosResponse) => {
     Cookies.set('HexZone', res.data.token, { expires: 7 })
-    setAuth(true)
+    setIsAuth(true)
   }
 
   const login = (password: string, email: string) => {
@@ -63,7 +63,7 @@ export const AuthContextProvider = ({ children }: Props) => {
     login,
     signup,
     logout,
-    auth,
+    isAuth,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

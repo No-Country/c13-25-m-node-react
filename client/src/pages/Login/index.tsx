@@ -18,10 +18,10 @@ import { useAuth } from '@/context'
 import { Navigate } from 'react-router-dom'
 
 export const Login = () => {
-  const { auth } = useAuth()
+  const { isAuth } = useAuth()
 
   const { isFormValid, handleSubmit, handleChange, formData } = UseFormLogin()
-  return !auth ? (
+  return !isAuth ? (
     <Flex
       bgImage={`url(${backgroundlogin})`}
       bgPosition="center"
