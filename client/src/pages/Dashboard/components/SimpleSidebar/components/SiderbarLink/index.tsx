@@ -1,13 +1,7 @@
 import { Button, Icon } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
+import { useState } from 'react'
 
-const styles = {
-  background:
-    ' linear-gradient(270deg, rgba(1, 1, 1, 0) 1.04%, rgba(1, 1, 1, 0.2) 74.48%, rgba(1, 1, 1, 0) 85.42%)',
-  borderColor: '#E3C488',
-  color: '#E3C488',
-}
-
-/* Polygon 1 */
 const Polygon1 = {
   content: "''",
   boxSizing: 'border-box',
@@ -23,7 +17,7 @@ const Polygon1 = {
   borderBottom: '1px solid #E3C488',
   borderLeft: '1px solid #E3C488',
 }
-/* Polygon 2 */
+
 const Polygon2 = {
   ...Polygon1,
   top: '43%',
@@ -32,34 +26,62 @@ const Polygon2 = {
   height: '20px',
 }
 
+const background = {
+  background:
+    'linear-gradient(270deg, rgba(1, 1, 1, 0) 1.04%, rgba(1, 1, 1, 0.2) 74.48%, rgba(1, 1, 1, 0) 85.42%)',
+}
+
 interface SidebarLinkProps {
   icon: React.ElementType
   label: string
+  isSelected: boolean
+  to?: string
+  onClick: () => void
 }
 
 export const SidebarLink = ({
   icon: IconComponent,
   label,
+  isSelected,
+  onClick,
+  to,
 }: SidebarLinkProps) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const buttonStyles = {
+    color: isSelected || isHovered ? '#E3C488' : '#8C8C8C',
+    fontSize: 'xl',
+    fontFamily: 'Inter',
+    justifyContent: 'flex-start',
+    w: '100%',
+    h: '58px',
+    ml: '40px',
+    _hover: background,
+    _focus: {
+      ...background,
+      '&::after': isSelected || isHovered ? Polygon2 : {},
+      '&::before': isSelected || isHovered ? Polygon1 : {},
+    },
+  }
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+  }
   return (
     <Button
-      color={'#8C8C8C'}
-      fontFamily={'Inter'}
-      justifyContent={'flex-start'}
-      w={'100%'}
-      h={'58px'}
-      ml={'40px'}
+      as={RouterLink}
+      to={to}
       leftIcon={<Icon as={IconComponent} boxSize={8} mr={4} />}
-      fontSize="xl"
       variant="ghost"
-      _hover={{ ...styles }}
-      _focus={{
-        ...styles,
-        '&::after': Polygon2,
-        '&::before': Polygon1,
-      }}
+      {...buttonStyles}
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {label}
     </Button>
   )
 }
+
+export default SidebarLink
