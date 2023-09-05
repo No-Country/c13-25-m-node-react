@@ -8,7 +8,6 @@ import {
   Equipo,
 } from '@/pages'
 import { Feed } from '@/pages/Dashboard/components'
-
 import { Route, Routes } from 'react-router-dom'
 
 export const AppRouter = () => {
