@@ -52,6 +52,8 @@ export const AuthContextProvider = ({ children }: Props) => {
   }
 
   const logout = () => {
+    Cookies.remove('HexZone')
+    setIsAuth(false)
     setUser(undefined)
   }
 

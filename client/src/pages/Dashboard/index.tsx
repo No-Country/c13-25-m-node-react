@@ -1,7 +1,8 @@
 import { Center, Flex, Box } from '@chakra-ui/react'
-import { ContactSuggestions, Feed } from './components'
+import { ContactSuggestions } from './components'
 
 import SimpleSidebar from './components/SimpleSidebar'
+import { Outlet } from 'react-router-dom'
 export const Dashboard = () => {
   return (
     <Flex
@@ -20,7 +21,8 @@ export const Dashboard = () => {
       </Box>
 
       <Center p={7} w={1200}>
-        <Feed />
+        {/* <Feed /> */}
+        <Outlet />
       </Center>
       <ContactSuggestions />
     </Flex>
