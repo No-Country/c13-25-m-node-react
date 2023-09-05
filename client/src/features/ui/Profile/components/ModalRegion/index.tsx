@@ -11,8 +11,6 @@ import {
   Button,
   ModalFooter,
   VStack,
-  Center,
-  Heading,
   Text,
 } from '@chakra-ui/react'
 
