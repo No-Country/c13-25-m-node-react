@@ -10,10 +10,15 @@ import {
   Tabs,
   TabIndicator,
   TabList,
+  Select,
+  useDisclosure,
 } from '@chakra-ui/react'
 import Fondo from '@/assets/ProfileImg/Fondo.jpg'
 import Blue_Melee from '@/assets/ProfileImg/Blue_Melee_Minion_profileicon 1.jpg'
 import Roll from '@/assets/ProfileImg/Roll1.png'
+import { TabPanels, TabPanel } from '@chakra-ui/react'
+import { ModalRegion, MyPosting, Statistics } from './components'
+import { useState } from 'react'
 
 const userProfile = {
   img: Fondo,
@@ -25,6 +30,22 @@ const userProfile = {
 }
 
 export const Profile = () => {
+  const [selectedRoll, setSelectedRoll] = useState('0')
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const handleSelectedRoll = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedRoll(e.target.value)
+  }
+
+  const logoRoll: { [key: string]: string } = {
+    '0': 'src/assets/roles/0.png',
+    '1': 'src/assets/roles/1.png',
+    '2': 'src/assets/roles/2.png',
+    '3': 'src/assets/roles/3.png',
+    '4': 'src/assets/roles/4.png',
+    '5': 'src/assets/roles/5.png',
+  }
+
   return (
     <>
       <VStack w="70vw" bgColor="#282C37">
@@ -62,7 +83,9 @@ export const Profile = () => {
         </Box>
         <Box>
           <Text color={'#717171'} mt={'-8px'}>
-            {userProfile.userName}
+            <Button variant="unstyled" onClick={onOpen}>
+              {userProfile.userName}
+            </Button>
           </Text>
         </Box>
         <Flex
@@ -73,10 +96,23 @@ export const Profile = () => {
           justifyContent={'space-between'}
         >
           <Flex flexGrow={1} alignItems={'center'}>
-            <Image src={userProfile.roll} alt=""></Image>
-            <Text ml={'8px'} fontWeight={600}>
-              Elige tu rol principal
-            </Text>
+            <Image src={logoRoll[selectedRoll]} />
+            <Select
+              variant="filled"
+              ml={'8px'}
+              fontWeight={600}
+              w={200}
+              value={selectedRoll}
+              placeholder="Elige tu rol"
+              _focusVisible={{ boder: 'none' }}
+              onChange={handleSelectedRoll}
+            >
+              <option value="1">Top Laners</option>
+              <option value="2">Jungler</option>
+              <option value="3">Mid line</option>
+              <option value="4">Bot Laners</option>
+              <option value="5">Support</option>
+            </Select>
           </Flex>
           <Button variant={'outline'} size={'sm'} borderColor={'#E3C488'}>
             Editar perfil
@@ -104,14 +140,22 @@ export const Profile = () => {
               Mis estadísticas
             </Tab>
           </TabList>
-
           <TabIndicator
             mt="-1.5px"
             height="2px"
             bg="#E3C488"
             borderRadius="1px"
           />
+          <TabPanels m={10}>
+            <TabPanel>
+              <MyPosting />
+            </TabPanel>
+            <TabPanel>
+              <Statistics />
+            </TabPanel>
+          </TabPanels>
         </Tabs>
+        <ModalRegion isOpen={isOpen} onClose={onClose} />
       </VStack>
     </>
   )
