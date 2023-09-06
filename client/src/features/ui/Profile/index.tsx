@@ -19,6 +19,9 @@ import Roll from '@/assets/ProfileImg/Roll1.png'
 import { TabPanels, TabPanel } from '@chakra-ui/react'
 import { ModalRegion, MyPosting, Statistics } from './components'
 import { useState } from 'react'
+import { API_USER_LOGIN } from '@/utils'
+
+console.log(API_USER_LOGIN)
 
 const userProfile = {
   img: Fondo,
@@ -102,11 +105,10 @@ export const Profile = () => {
               ml={'8px'}
               fontWeight={600}
               w={200}
-              value={selectedRoll}
-              placeholder="Elige tu rol"
               _focusVisible={{ boder: 'none' }}
               onChange={handleSelectedRoll}
             >
+              <option value="0">Elige tu rol</option>
               <option value="1">Top Laners</option>
               <option value="2">Jungler</option>
               <option value="3">Mid line</option>
