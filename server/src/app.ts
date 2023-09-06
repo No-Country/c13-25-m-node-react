@@ -4,8 +4,11 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import api from './routes/api'
 import passport from 'passport'
+import helmet from 'helmet'
 import { passportMiddleware } from './middleware/passportJwt.middleware'
 const app = express()
+
+app.use(helmet())
 
 app.use(
   cors({
