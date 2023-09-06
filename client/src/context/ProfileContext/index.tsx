@@ -1,9 +1,20 @@
 import React, { createContext, ReactNode, useContext } from 'react'
 
+interface Posting {
+  image?: string
+  text: string
+  likes: number
+}
+
 interface User {
   id: number
   name: string
   email: string
+  avatar: string
+  region: ['LAS']
+  postings: Posting[]
+  coverPhoto: string
+  level: number
   // Agrega más propiedades según tus necesidades
 }
 
