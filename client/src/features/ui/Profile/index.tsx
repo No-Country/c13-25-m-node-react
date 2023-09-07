@@ -51,7 +51,7 @@ export const Profile = () => {
 
   return (
     <>
-      <VStack w="70vw" bgColor="#282C37">
+      <VStack bgColor="#282C37">
         <Box>
           <Image
             objectFit="cover"
