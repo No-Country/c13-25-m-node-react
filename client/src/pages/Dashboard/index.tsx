@@ -14,7 +14,7 @@ export const Dashboard = () => {
       <Box
         h="100vh"
         bgColor={'#282C37'}
-        w={350}
+        w={250}
         borderRight={'2px solid #E3C488'}
       >
         <SimpleSidebar />

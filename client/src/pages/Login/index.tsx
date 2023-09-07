@@ -19,7 +19,6 @@ import { Navigate } from 'react-router-dom'
 
 export const Login = () => {
   const { isAuth } = useAuth()
-
   const { isFormValid, handleSubmit, handleChange, formData } = UseFormLogin()
   return !isAuth ? (
     <Flex
@@ -34,8 +33,8 @@ export const Login = () => {
       <Flex
         borderRadius={8}
         bgColor={'#282C37'}
-        w={'486px'}
-        h={'584px'}
+        w={'436px'}
+        h={'534px'}
         justifyContent={'center'}
         alignItems={'center'}
       >
