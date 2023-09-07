@@ -10,22 +10,28 @@ export const loginController = async (req: Request, res: Response): Promise<Resp
   let token
   try {
     if (!await checkIfExists(email)) return res.status(400).json({ message: 'No hay cuenta registrada con ese email' })
+
     const user: IUser | null = await getUserByEmail(email)
     if (user !== null) {
       if (!await comparePassword(password, user?.password)) return res.status(401).json({ message: 'Contraseña incorrecta' })
+
       token = generateToken(user?.email, user?.password)
-      // el token debe ir incluido en cada request en un header { Authorization: 'Bearer ' + token }
-      return res.status(200).json(
+      return res.status(200).cookie('Authorization',
+        token,
+        {
+          maxAge: 600000, // 10 minutes
+          httpOnly: true
+        }).json(
         {
           user: {
             _id: user._id,
             username: user.username,
             email: user.email,
             photourl: user.photourl
-          },
-          token
+          }
         })
     }
+
     return res.status(500).json({ message: 'Ha ocurrido un error, por favor vuelva a intentarlo' })
   } catch (error) {
     let errorMessage

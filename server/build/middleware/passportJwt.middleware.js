@@ -6,8 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.passportMiddleware = void 0;
 const passport_jwt_1 = require("passport-jwt");
 const User_1 = __importDefault(require("./../models/User"));
+const cookieExtractor = (req) => {
+    let cookie = null;
+    if (req && req.cookies) {
+        cookie = req.cookies.Authorization;
+    }
+    return cookie;
+};
 const opts = {
-    jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: cookieExtractor,
     secretOrKey: process.env.JWT_SECRET
 };
 exports.passportMiddleware = new passport_jwt_1.Strategy(opts, (payload, done) => {
