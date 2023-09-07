@@ -17,7 +17,12 @@ import Fondo from '@/assets/ProfileImg/Fondo.jpg'
 import Blue_Melee from '@/assets/ProfileImg/Blue_Melee_Minion_profileicon 1.jpg'
 import Roll from '@/assets/ProfileImg/Roll1.png'
 import { TabPanels, TabPanel } from '@chakra-ui/react'
-import { ModalRegion, MyPosting, Statistics } from './components'
+import {
+  ModalEditProfile,
+  ModalRegion,
+  MyPosting,
+  Statistics,
+} from './components'
 import { useState } from 'react'
 
 const userProfile = {
@@ -32,9 +37,13 @@ const userProfile = {
 export const Profile = () => {
   const [selectedRoll, setSelectedRoll] = useState('0')
   const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const [editProfile, SetEditProfile] = useState(false)
   const handleSelectedRoll = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRoll(e.target.value)
+  }
+
+  const handleClose = () => {
+    SetEditProfile(true)
   }
 
   const logoRoll: { [key: string]: string } = {
@@ -114,9 +123,8 @@ export const Profile = () => {
               <option value="5">Support</option>
             </Select>
           </Flex>
-          <Button variant={'outline'} size={'sm'} borderColor={'#E3C488'}>
-            Editar perfil
-          </Button>
+
+          <ModalEditProfile handleClose={handleClose} />
         </Flex>
         <Tabs w="100%" variant="unstyled">
           <TabList
@@ -150,9 +158,7 @@ export const Profile = () => {
             <TabPanel>
               <MyPosting />
             </TabPanel>
-            <TabPanel>
-              <Statistics />
-            </TabPanel>
+            <TabPanel>{editProfile ? <Statistics /> : <MyPosting />}</TabPanel>
           </TabPanels>
         </Tabs>
         <ModalRegion isOpen={isOpen} onClose={onClose} />
