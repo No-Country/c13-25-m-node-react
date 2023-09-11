@@ -24,27 +24,40 @@ import { IoMdSend } from 'react-icons/io'
 import { useState } from 'react'
 import { InteractionButton } from './components'
 
-export const Posting = () => {
+interface PostingProps {
+  name: string
+  user_icon: string
+  range: string
+  post: string
+  imgpost?: string
+}
+export const Posting = ({
+  name,
+  range,
+  post,
+  imgpost,
+  user_icon,
+}: PostingProps) => {
   const [showCommentInput, setShowCommentInput] = useState(false)
-
+  console.log(imgpost)
   const handleCommentButtonClick = () => {
     setShowCommentInput((prev) => !prev)
   }
 
   return (
-    <Card bg={'#282C37'}>
+    <Card bg={'#282C37'} mb={7}>
       <CardHeader>
         <HStack>
           <Image
             boxSize="46px"
             borderRadius="full"
-            src="https://i.pinimg.com/originals/20/62/f2/2062f2b8c7ca2988cb24824eb00b1221.jpg"
+            src={user_icon}
             alt="Poro Bigote"
           />
           <VStack align={'start'}>
-            <Heading size="sm">MaybeAmTheTimo</Heading>
+            <Heading size="sm">{name}</Heading>
             <Text fontSize={'12px'} color={'#A5A5A5'}>
-              ORO III - 5 min
+              {range}
             </Text>
           </VStack>
         </HStack>
@@ -52,13 +65,19 @@ export const Posting = () => {
 
       <CardBody>
         <Text fontSize={'15px'} color={'#A5A5A5'}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur
-          nemo voluptatem commodi. Quos eum tempore, libero quaerat natus alias!
-          Dignissimos ipsa enim quam iure aut quae, itaque maiores totam
-          voluptatibus pariatur nam odio nesciunt, quisquam reprehenderit,
-          necessitatibus magni. Ullam sunt sequi cum, corrupti porro repudiandae
-          obcaecati vitae accusantium quidem dolores!
+          {post}
         </Text>
+
+        {imgpost != '' ? (
+          <Image
+            objectFit="cover"
+            boxSize="100%"
+            src={imgpost}
+            borderRadius="lg"
+          />
+        ) : (
+          <></>
+        )}
       </CardBody>
 
       <HStack fontSize="1em" color={'#A5A5A5'} m={1} fontFamily={'roboto'}>

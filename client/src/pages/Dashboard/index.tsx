@@ -12,15 +12,16 @@ export const Dashboard = () => {
       overflowX="hidden"
     >
       <Box
-        h="100vh"
+        h={'100hv'}
         bgColor={'#282C37'}
-        w={250}
+        w={150}
         borderRight={'2px solid #E3C488'}
+        mb={4}
       >
         <SimpleSidebar />
       </Box>
 
-      <Center p={7} w={1200}>
+      <Center p={2} w={1200}>
         {/* <Feed /> */}
         <Outlet />
       </Center>

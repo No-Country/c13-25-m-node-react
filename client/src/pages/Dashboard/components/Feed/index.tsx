@@ -1,6 +1,6 @@
 import { Center, Tab, TabList, Tabs, TabIndicator } from '@chakra-ui/react'
-import { TabPosting, Posting, PostingCreate } from './components'
-
+import { TabPosting, PostingCreate, Posting } from './components'
+import { posts } from './components/Posting/posts'
 export const Feed = () => {
   return (
     <Center>
@@ -30,7 +30,17 @@ export const Feed = () => {
         />
         <PostingCreate />
         <TabPosting />
-        <Posting />
+        {/* <Posting /> */}
+        {posts.map((post) => (
+          <Posting
+            key={post.name}
+            name={post.name}
+            user_icon={post.user_icon}
+            range={post.range}
+            imgpost={post.imgurl}
+            post={post.post}
+          />
+        ))}
       </Tabs>
     </Center>
   )
