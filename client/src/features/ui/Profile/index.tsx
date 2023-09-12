@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react'
 import Fondo from '@/assets/ProfileImg/Fondo.jpg'
 import Blue_Melee from '@/assets/ProfileImg/Blue_Melee_Minion_profileicon 1.jpg'
-import Roll from '@/assets/ProfileImg/Roll1.png'
-
+//import Roll from '@/assets/ProfileImg/Roll1.png'
+import Roll from '@/assets/roles/0.png'
 import { TabPanels, TabPanel } from '@chakra-ui/react'
 import { ModalRegion, MyPosting, Statistics } from './components'
 import { useProfileContext } from '@/context/ProfileContext'
