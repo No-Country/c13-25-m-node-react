@@ -25,15 +25,16 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
             if (!(yield (0, hashPassword_1.comparePassword)(password, user === null || user === void 0 ? void 0 : user.password)))
                 return res.status(401).json({ message: 'Contraseña incorrecta' });
             token = (0, generateToken_1.generateToken)(user === null || user === void 0 ? void 0 : user.email, user === null || user === void 0 ? void 0 : user.password);
-            // el token debe ir incluido en cada request en un header { Authorization: 'Bearer ' + token }
-            return res.status(200).json({
+            return res.status(200).cookie('Authorization', token, {
+                maxAge: 600000,
+                httpOnly: true
+            }).json({
                 user: {
                     _id: user._id,
                     username: user.username,
                     email: user.email,
                     photourl: user.photourl
-                },
-                token
+                }
             });
         }
         return res.status(500).json({ message: 'Ha ocurrido un error, por favor vuelva a intentarlo' });
