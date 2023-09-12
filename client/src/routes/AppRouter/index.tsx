@@ -1,8 +1,9 @@
 import { Profile } from '@/features/ui/Profile'
-import { Dashboard, SingnUp, Login, Onboarding, Equipo } from '@/pages'
+import { Dashboard, SingnUp, Login, Onboarding } from '@/pages'
 import { Noticias } from '@/features/ui/Noticias'
 import { Feed } from '@/pages/Dashboard/components'
 import { Route, Routes } from 'react-router-dom'
+import Equipo from '@/features/ui/Equipo'
 
 export const AppRouter = () => {
   return (
