@@ -2,29 +2,29 @@ import { Button, Icon } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { useState } from 'react'
 
-const Polygon1 = {
-  content: "''",
-  boxSizing: 'border-box',
-  position: 'absolute',
-  width: '30px',
-  height: '30px',
-  top: '35%',
-  right: '-10px',
-  background: '#1E2027',
-  transform: 'rotate(-315deg)',
-  borderTop: '1px solid transparent',
-  borderRight: '1px solid transparent',
-  borderBottom: '1px solid #E3C488',
-  borderLeft: '1px solid #E3C488',
-}
+// const Polygon1 = {
+//   content: "''",
+//   boxSizing: 'border-box',
+//   position: 'absolute',
+//   width: '30px',
+//   height: '30px',
+//   top: '35%',
+//   right: '-10px',
+//   background: '#1E2027',
+//   transform: 'rotate(-315deg)',
+//   borderTop: '1px solid transparent',
+//   borderRight: '1px solid transparent',
+//   borderBottom: '1px solid #E3C488',
+//   borderLeft: '1px solid #E3C488',
+// }
 
-const Polygon2 = {
-  ...Polygon1,
-  top: '43%',
-  right: '-6px',
-  width: '20px',
-  height: '20px',
-}
+// const Polygon2 = {
+//   ...Polygon1,
+//   top: '43%',
+//   right: '-6px',
+//   width: '20px',
+//   height: '20px',
+// }
 
 const background = {
   background:
@@ -33,7 +33,7 @@ const background = {
 
 interface SidebarLinkProps {
   icon: React.ElementType
-  label: string
+  label?: string
   isSelected: boolean
   to?: string
   onClick: () => void
@@ -41,7 +41,7 @@ interface SidebarLinkProps {
 
 export const SidebarLink = ({
   icon: IconComponent,
-  label,
+  // label,
   isSelected,
   onClick,
   to,
@@ -51,15 +51,13 @@ export const SidebarLink = ({
     color: isSelected || isHovered ? '#E3C488' : '#8C8C8C',
     fontSize: 'xl',
     fontFamily: 'Inter',
-    justifyContent: 'flex-start',
     w: '100%',
-    h: '58px',
-    ml: '40px',
+    h: '100%',
     _hover: background,
     _focus: {
       ...background,
-      '&::after': isSelected || isHovered ? Polygon2 : {},
-      '&::before': isSelected || isHovered ? Polygon1 : {},
+      // '&::after': isSelected || isHovered ? Polygon2 : {},
+      // '&::before': isSelected || isHovered ? Polygon1 : {},
     },
   }
   const handleMouseEnter = () => {
@@ -72,14 +70,14 @@ export const SidebarLink = ({
     <Button
       as={RouterLink}
       to={to}
-      leftIcon={<Icon as={IconComponent} boxSize={8} mr={4} />}
+      leftIcon={<Icon as={IconComponent} boxSize={8} />}
       variant="ghost"
       {...buttonStyles}
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {label}
+      {/* {label} */}
     </Button>
   )
 }

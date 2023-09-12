@@ -1,3 +1,5 @@
 export * from './MyPostings'
 export * from './Statistics'
 export * from './ModalRegion'
+export * from './ModalEditProfile'
+export * from './ModalEditRegion'

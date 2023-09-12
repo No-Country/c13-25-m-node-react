@@ -1,17 +1,27 @@
-import { useState } from 'react'
-import { VStack } from '@chakra-ui/react'
+import { useRef, useState } from 'react'
 import {
-  FaHome,
-  FaNewspaper,
-  FaComment,
-  FaUsers,
-  FaSignOutAlt,
-} from 'react-icons/fa'
+  Button,
+  Divider,
+  Flex,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/react'
+import { FaHome, FaNewspaper, FaSignOutAlt, FaUsers } from 'react-icons/fa'
+import { IoMdPerson } from 'react-icons/io'
+import { Link as RouterLink } from 'react-router-dom'
 import { SidebarLink } from './components'
 import './styles.css'
 import { useAuth } from '@/context'
 
 const SimpleSidebar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const finalRef = useRef(null)
   const { logout } = useAuth()
   const [selectedButton, setSelectedButton] = useState('Home')
 
@@ -27,31 +37,72 @@ const SimpleSidebar = () => {
       SelectButton,
     },
     { name: 'Equipo', icon: FaUsers, to: '/dashboard/equipo', SelectButton },
-    { name: 'Chat', icon: FaComment, to: '/dashboard/chat', SelectButton },
+    {
+      name: 'Profile',
+      icon: IoMdPerson,
+      to: '/dashboard/profile',
+      SelectButton,
+    },
   ]
 
   return (
-    <VStack as="nav" p={4} spacing={4} w={'100%'} h={'100%'} mt={10}>
-      {links.map((link) => (
+    <Flex
+      as="nav"
+      w={'100%'}
+      h={'100%'}
+      mt={2}
+      justifyContent={'space-evenly'}
+      alignItems={'center'}
+      flexDirection={'column'}
+    >
+      <Flex flexDirection={'column'} gap={10}>
+        {links.map((link) => (
+          <SidebarLink
+            to={link.to}
+            key={link.name}
+            icon={link.icon}
+            label={link.name}
+            isSelected={selectedButton === link.name}
+            onClick={() => SelectButton(link.name)}
+          />
+        ))}
+      </Flex>
+      <Divider />
+      <Flex>
         <SidebarLink
-          to={link.to}
-          key={link.name}
-          icon={link.icon}
-          label={link.name}
-          isSelected={selectedButton === link.name}
-          onClick={() => SelectButton(link.name)}
+          key={'LogOut'}
+          icon={FaSignOutAlt}
+          label={'LogOut'}
+          isSelected={selectedButton === 'Logout'}
+          onClick={onOpen}
         />
-      ))}
+      </Flex>
+      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Desconectarse</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>¿Deseas Salir?</p>
+          </ModalBody>
 
-      <SidebarLink
-        to={'/'}
-        key={'LogOut'}
-        icon={FaSignOutAlt}
-        label={'LogOut'}
-        isSelected={selectedButton === 'LogOut'}
-        onClick={logout}
-      />
-    </VStack>
+          <ModalFooter>
+            <Button
+              as={RouterLink}
+              to={'/'}
+              colorScheme="blue"
+              mr={3}
+              onClick={logout}
+            >
+              Salir
+            </Button>
+            <Button variant="ghost" onClick={onClose}>
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Flex>
   )
 }
 

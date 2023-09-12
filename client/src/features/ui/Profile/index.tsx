@@ -19,7 +19,6 @@ import { TabPanels, TabPanel } from '@chakra-ui/react'
 import { ModalRegion, MyPosting, Statistics } from './components'
 import { useProfileContext } from '@/context/ProfileContext'
 import { useState } from 'react'
-import path from 'path'
 
 const userProfile = {
   img: Fondo,

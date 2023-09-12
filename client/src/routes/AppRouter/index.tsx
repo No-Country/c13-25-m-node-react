@@ -1,6 +1,6 @@
 import { Profile } from '@/features/ui/Profile'
-import { Dashboard, SingnUp, Login, Onboarding, Noticias, Chat } from '@/pages'
-
+import { Dashboard, SingnUp, Login, Onboarding, Equipo } from '@/pages'
+import { Noticias } from '@/features/ui/Noticias'
 import { Feed } from '@/pages/Dashboard/components'
 import { Route, Routes } from 'react-router-dom'
 
@@ -11,8 +11,8 @@ export const AppRouter = () => {
       <Route path="/dashboard" element={<Dashboard />}>
         <Route path="" element={<Feed />} />
         <Route path="noticias" element={<Noticias />} />
-        <Route path="equipo" element={<Profile />} />
-        <Route path="chat" element={<Chat />} />
+        <Route path="equipo" element={<Equipo />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="/" element={<Onboarding />} />
       <Route path="/login" element={<Login />} />

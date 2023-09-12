@@ -1,7 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { UseFormLogin } from '@/hooks/UseFormLogin'
 
-import backgroundlogin from '@/assets/images/backgroundlogin.png'
+import backgroundlogin from '@/assets/images/login-background1.jpg'
 import {
   Box,
   Button,
@@ -19,7 +19,6 @@ import { Navigate } from 'react-router-dom'
 
 export const Login = () => {
   const { isAuth } = useAuth()
-
   const { isFormValid, handleSubmit, handleChange, formData } = UseFormLogin()
   return !isAuth ? (
     <Flex
@@ -27,15 +26,15 @@ export const Login = () => {
       bgPosition="center"
       bgRepeat="no-repeat"
       w="100%"
-      h="100vh"
+      h="90vh"
       justifyContent="center"
       alignItems="center"
     >
       <Flex
         borderRadius={8}
         bgColor={'#282C37'}
-        w={'486px'}
-        h={'584px'}
+        w={'400px'}
+        h={'480px'}
         justifyContent={'center'}
         alignItems={'center'}
       >
@@ -44,12 +43,12 @@ export const Login = () => {
             as="h1"
             color={'#E3C488'}
             fontSize={'2.2em'}
-            mb={'50px'}
+            mb={'30px'}
             fontWeight={400}
           >
             Bienvenido Invocador!
           </Heading>
-          <Box minW={359}>
+          <Box minW={330}>
             <form onSubmit={handleSubmit}>
               <FormControl isRequired mb={4}>
                 <Input

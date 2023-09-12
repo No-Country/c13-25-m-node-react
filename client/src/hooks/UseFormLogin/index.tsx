@@ -18,7 +18,8 @@ export const UseFormLogin = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    login(formData.password, formData.email.toLowerCase())
+    //login(formData.password, formData.email.toLowerCase())
+    login(formData.password, formData.email)
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
