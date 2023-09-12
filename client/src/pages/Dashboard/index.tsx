@@ -1,4 +1,4 @@
-import { Center, Flex, Box } from '@chakra-ui/react'
+import { Flex, Box, Stack } from '@chakra-ui/react'
 import { ContactSuggestions } from './components'
 
 import SimpleSidebar from './components/SimpleSidebar'
@@ -20,10 +20,10 @@ export const Dashboard = () => {
         <SimpleSidebar />
       </Box>
 
-      <Center p={7} w={1200}>
+      <Stack w={1200}>
         {/* <Feed /> */}
         <Outlet />
-      </Center>
+      </Stack>
       <ContactSuggestions />
     </Flex>
   )
