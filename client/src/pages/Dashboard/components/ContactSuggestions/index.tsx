@@ -69,7 +69,7 @@ export const ContactSuggestions = () => {
   return (
     <VStack
       mx={10}
-      my={50}
+      mt={50}
       w={350}
       h="auto"
       borderRadius={8}
