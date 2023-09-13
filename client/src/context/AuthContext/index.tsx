@@ -22,6 +22,8 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
+const SERVER_LOCAL = import.meta.env.VITE_API_SERVER_LOCAL
+//const SERVER_PRODUCTION = import.meta.env.VITE_API_SERVER_PRODUCTION
 
 export const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>()
@@ -35,14 +37,15 @@ export const AuthContextProvider = ({ children }: Props) => {
 
   const login = (password: string, email: string) => {
     axios
-      .post('http://localhost:8000/v1/user/login', { email, password })
+
+      .post(`${SERVER_LOCAL}login`, { email, password })
       .then((res) => SetData(res))
       .catch((error) => console.log(error))
   }
 
   const signup = (username: string, email: string, password: string) => {
     axios
-      .post('http://localhost:8000/v1/user/register', {
+      .post(`${SERVER_LOCAL}register`, {
         username,
         email,
         password,
