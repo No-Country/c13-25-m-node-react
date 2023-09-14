@@ -1,12 +1,22 @@
-import { Home } from '@/pages/Home'
-import LoginLayout from '@/pages/login/LoginLayout'
+import { Profile } from '@/features/ui/Profile'
+import { Dashboard, SingnUp, Login, Onboarding } from '@/pages'
+import { Noticias } from '@/features/ui/Noticias'
+import { Feed } from '@/pages/Dashboard/components'
 import { Route, Routes } from 'react-router-dom'
+import Equipo from '@/features/ui/Equipo'
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginLayout />} />
+      <Route path="/signup" element={<SingnUp />} />
+      <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="" element={<Feed />} />
+        <Route path="noticias" element={<Noticias />} />
+        <Route path="equipo" element={<Equipo />} />
+        <Route path="profile" element={<Profile />} />
+      </Route>
+      <Route path="/" element={<Onboarding />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   )
 }

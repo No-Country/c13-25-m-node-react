@@ -1,12 +1,2 @@
-*.log
-*.cache
-*.class
-.DS_Store
-*.pem
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-.vscode/
+node_modules
+node_modules

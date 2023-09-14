@@ -1,3 +1,5 @@
+import { AuthContextProvider } from '@/context'
+import { UserContextProvider } from '@/context/ProfileContext'
 import theme from '@/styles/theme'
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -10,7 +12,11 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <Router>{children}</Router>
+        <AuthContextProvider>
+          <UserContextProvider>
+            <Router>{children}</Router>
+          </UserContextProvider>
+        </AuthContextProvider>
       </ChakraProvider>
     </>
   )
