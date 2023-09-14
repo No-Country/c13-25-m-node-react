@@ -74,7 +74,7 @@ export const ModalRegion = ({ isOpen, onClose, handleImageSelect }: Props) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bgColor={'#282C37'}>
           <Modal isOpen={isOpenRegion} onClose={onCloseRegion} isCentered>
             <ModalContent>
               <ModalHeader></ModalHeader>
@@ -86,7 +86,7 @@ export const ModalRegion = ({ isOpen, onClose, handleImageSelect }: Props) => {
                   </Text>
                   <InputGroup>
                     <Input
-                      placeholder="¿En que region estas?"
+                      placeholder="Nombre de Invocador"
                       bgColor="#FFF"
                       color="#000"
                       fontSize={14}

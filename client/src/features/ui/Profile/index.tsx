@@ -20,6 +20,15 @@ import { ModalRegion, MyPosting, Statistics } from './components'
 import { useProfileContext } from '@/context/ProfileContext'
 import { useState } from 'react'
 
+import roll0 from '@/assets/roles/0.png'
+import roll1 from '@/assets/roles/1.png'
+import roll2 from '@/assets/roles/2.png'
+import roll3 from '@/assets/roles/3.png'
+import roll4 from '@/assets/roles/4.png'
+import roll5 from '@/assets/roles/5.png'
+
+const roles = [roll0, roll4, roll2, roll1, roll3, roll5]
+
 const userProfile = {
   img: Fondo,
   userName: '@Leo123',
@@ -45,7 +54,9 @@ export const Profile = () => {
 
   const handleImageSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedImageName = event.target.value
-    const selectedImagePath = `assets/roles/${selectedImageName}.png`
+    //const selectedImagePath = `@/assets/roles/${selectedImageName}.png`
+    const selectedImagePath = roles[parseInt(selectedImageName)]
+
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     setUser({ ...user, roll: selectedImageName })
@@ -105,16 +116,19 @@ export const Profile = () => {
         align="center"
       >
         <Flex flexGrow={1} alignItems={'center'} gap={5}>
-          <Image src={selectedImage.path} alt={selectedImage.name} />
+          <Image src={`${selectedImage.path}`} alt={selectedImage.name} />
           <Text color="#E6E6E6" fontSize={17}>
             {'Elige tu rol principal'}
           </Text>
         </Flex>
         <Button
+          _hover={{ bgColor: '#319795' }}
+          colorScheme="teal"
           variant={'outline'}
           size={'sm'}
-          borderColor={'#E3C488'}
+          borderColor={'#B4975F'}
           onClick={onOpen}
+          color={'white'}
         >
           Editar perfil
         </Button>
