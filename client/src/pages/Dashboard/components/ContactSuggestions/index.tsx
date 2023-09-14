@@ -105,6 +105,7 @@ export const ContactSuggestions = () => {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent
+                      bgColor={'#282C37'}
                       w="auto"
                       px={10}
                       py={3}

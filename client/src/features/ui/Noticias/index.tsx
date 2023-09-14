@@ -47,7 +47,7 @@ export const Noticias = () => {
       </Heading>
       {newsData.map((item, key) => (
         <Flex key={key} w="100%" borderRadius={8} mb={3} bgColor="#282C37">
-          <Image src={item.image} alt="" w={'50%'} borderRadius={8} />
+          <Image src={item.image} alt="" maxW={'50%'} borderRadius={8} />
           <Flex
             p={10}
             boxSizing="border-box"
